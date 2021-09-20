@@ -23,6 +23,7 @@ class TicTacToeNode
         new_board = self.board.dup
         pos = [row,col]
         new_board[pos] = next_mover_mark if new_board.empty?(pos)
+        children_arr << self.class.new(new_board, , )
       end
     end
     children_arr
