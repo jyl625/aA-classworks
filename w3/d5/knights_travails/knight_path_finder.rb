@@ -34,7 +34,6 @@ class KnightPathFinder
     until queue.empty?
       current_node = queue.shift
       new_moves = self.new_move_positions(current_node.value)
-      return if new_moves.empty?
       new_moves.each do |pos|
         child_node = PolyTreeNode.new(pos)
         child_node.parent = current_node
@@ -44,20 +43,21 @@ class KnightPathFinder
     nil
   end
 
-  # def build_move_tree(target_pos)
-  #   queue = [@root_node]
-  #   until queue.empty?
-  #     current_node = queue.shift
-  #     return current_node if current_node.value == target_pos
-  #     current_node.new_move_positions(current_node.value).each do |possible_move|
-  #       child_node = PolyTreeNode.new(possible_move)
-  #       child_node.parent = @current_node
-  #       queue << child_node
-  #     end
-  #   end
-  #   nil
-  # end
+  def trace_path_back(node)
+    path = []
 
-  def find_path(end_pos)
+    curr_node = node
+
+    until curr_node.nil?
+      path.unshift(curr_node.value)
+      curr_node = curr_node.parent
+    end
+
+    path
   end
+
+  def find_path(end_pos);
+    trace_path_back(@root_node.bfs(end_pos))
+  end
+
 end
