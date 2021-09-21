@@ -1,7 +1,8 @@
+require 'byebug'
 require_relative 'tic_tac_toe'
 
 class TicTacToeNode
-  attr_reader :board, :next_mover_mark
+  attr_reader :board, :next_mover_mark, :prev_move_pos
   def initialize(board, next_mover_mark, prev_move_pos = nil)
     @board = board
     @next_mover_mark = next_mover_mark
@@ -20,12 +21,29 @@ class TicTacToeNode
     children_arr = []
     (0...3).each do |row|
       (0...3).each do |col|
-        new_board = self.board.dup
         pos = [row,col]
-        new_board[pos] = next_mover_mark if new_board.empty?(pos)
-        children_arr << self.class.new(new_board, , )
+        if self.board.empty?(pos)
+          new_board = self.board.dup
+          new_board[pos] = next_mover_mark 
+          next_mark = self.next_mover_mark == :x ? :o : :x
+          children_arr << self.class.new(new_board, next_mark ,pos)
+        end
       end
     end
     children_arr
   end
+
+  def losing_node?(evaluator)
+    # debugger
+    return true if self.board.won? && evaluator == self.next_mover_mark
+    return false if self.board.tied?
+    return false if self.board.won? && evaluator != self.next_mover_mark
+    
+    other_mark = evaluator == :x ? :o : :x
+    if self.next_mover_mark != evaluator#player's turn
+      self.children.all? { |child| child.losing_node?(other_mark) }
+    else #opponents
+      self.children.any? { |child| child.losing_node?(other_mark) }
+    end
+  end  
 end
