@@ -12,6 +12,8 @@ class Manager < Employee
     multiplier * self.subemployee_salaries
   end
 
+  protected
+
   def subemployee_salaries
     self.employees.inject(0) do |acc, employee|
       if employee.is_a?(Manager)
