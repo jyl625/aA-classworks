@@ -59,12 +59,13 @@ def largest_contiguous_subsum(list)
   i = 0
   until i == list.length
     current_sum -= list[i]
-    i += 1
 
-    if current_sum > largest_sum
+    if current_sum > largest_sum && i != list.length - 2
       largest_sum = current_sum 
       start_idx = i
     end
+
+    i += 1
   end
 
   start_idx = 0 if start_idx.nil?
