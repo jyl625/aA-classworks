@@ -60,7 +60,9 @@ def largest_contiguous_subsum(list)
   until i == list.length
     current_sum -= list[i]
 
-    if current_sum > largest_sum && i != list.length - 2
+    break if i == list.length - 2
+
+    if current_sum > largest_sum #&& i != list.length - 2
       largest_sum = current_sum 
       start_idx = i
     end
@@ -69,10 +71,10 @@ def largest_contiguous_subsum(list)
   end
 
   start_idx = 0 if start_idx.nil?
-  current_sum = largest_sum if largest_sum > current_sum
+  current_sum = largest_sum #if largest_sum > current_sum
 
   j = list.length - 1
-  until j < start_idx
+  until j == start_idx + 1
     current_sum -= list[j]
     j -= 1
 
@@ -83,11 +85,11 @@ def largest_contiguous_subsum(list)
 end
 
 
-# list = [5, 3, -7]
-# p largest_contiguous_subsum(list) # => 8
+list = [5, 3, -7]
+p largest_contiguous_subsum(list) # => 8
 
-# list = [2, 3, -6, 7, -6, 7, 1]
-# p largest_contiguous_subsum(list) # => 9 (from [7, -6, 7, 1])
+list = [2, 3, -6, 7, -6, 7, 1]
+p largest_contiguous_subsum(list) # => 9 (from [7, -6, 7, 1])
 
 list = [-5, -1, -3]
 p largest_contiguous_subsum(list) # => -1 (from [-1])
