@@ -34,30 +34,30 @@ end
 
 # end
 
-def largest_contiguous_subsum(list)
-    # debugger
-    largest_sum = -99
-    cur_sum = list.shift
-    sub_arr = [cur_sum]
-    list.each do |a|
-        cur_sum += a
-        sub_arr << a
-        if sub_arr.length >= 1 && cur_sum - sub_arr.first > cur_sum
-          cur_sum = cur_sum - sub_arr.first
-          sub_arr.unshift(a)
-        end
-        largest_sum = cur_sum if cur_sum > largest_sum
-    end
-    largest_sum
-end
+# def largest_contiguous_subsum(list)
+#     # debugger
+#     largest_sum = -99
+#     cur_sum = list.shift
+#     sub_arr = [cur_sum]
+#     list.each do |a|
+#         cur_sum += a
+#         sub_arr << a
+#         if sub_arr.length >= 1 && cur_sum - sub_arr.first > cur_sum
+#           cur_sum = cur_sum - sub_arr.first
+#           sub_arr.unshift(a)
+#         end
+#         largest_sum = cur_sum if cur_sum > largest_sum
+#     end
+#     largest_sum
+# end
 
 def largest_contiguous_subsum(list)
   # debugger
   largest_sum = list.sum
-  current_sum = largest_sum
+  current_sum = largest_sum # sum of [2, 3, -6, 7, -6, 7, 1]
 
   i = 0
-  until i == list.length
+  until i == list.length   # sum of [2, 3, -6, 7, -6, 7, 1]
     current_sum -= list[i]
 
     break if i == list.length - 2
