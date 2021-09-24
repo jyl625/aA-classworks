@@ -14,7 +14,7 @@ end
 def second_anagram?(str_1, str_2)
   temp = str_2.split("") 
   str_1.each_char.with_index  do |char, i| #O(n) **
-    temp_idx = temp.find_index(char) #O(n*log(n)) **
+    temp_idx = temp.find_index(char) #O(n*log(n)) ** (need to check this!)
     return false if temp_idx.nil?
     temp.slice!(temp_idx)           #O(n)
   end   
