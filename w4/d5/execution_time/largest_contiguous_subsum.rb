@@ -51,32 +51,47 @@ end
 #     largest_sum
 # end
 
+# def largest_contiguous_subsum(list)
+#   # debugger
+#   largest_sum = list.sum
+#   current_sum = largest_sum # sum of [2, 3, -6, 7, -6, 7, 1]
+
+#   i = 0
+#   until i == list.length   # sum of [2, 3, -6, 7, -6, 7, 1]
+#     current_sum -= list[i]
+
+#     break if i == list.length - 2
+
+#     if current_sum > largest_sum #&& i != list.length - 2
+#       largest_sum = current_sum 
+#       start_idx = i
+#     end
+
+#     i += 1
+#   end
+
+#   start_idx = 0 if start_idx.nil?
+#   current_sum = largest_sum #if largest_sum > current_sum
+
+#   j = list.length - 1
+#   until j == start_idx + 1
+#     current_sum -= list[j]
+#     j -= 1
+
+#     largest_sum = current_sum if current_sum > largest_sum
+#   end
+
+#   largest_sum
+# end
+
 def largest_contiguous_subsum(list)
-  # debugger
-  largest_sum = list.sum
-  current_sum = largest_sum # sum of [2, 3, -6, 7, -6, 7, 1]
+  largest_sum = list.first
+  current_sum = list.first
 
-  i = 0
-  until i == list.length   # sum of [2, 3, -6, 7, -6, 7, 1]
-    current_sum -= list[i]
+  (1...list.length).each do |idx|
+    current_sum = 0 if current_sum < 0
 
-    break if i == list.length - 2
-
-    if current_sum > largest_sum #&& i != list.length - 2
-      largest_sum = current_sum 
-      start_idx = i
-    end
-
-    i += 1
-  end
-
-  start_idx = 0 if start_idx.nil?
-  current_sum = largest_sum #if largest_sum > current_sum
-
-  j = list.length - 1
-  until j == start_idx + 1
-    current_sum -= list[j]
-    j -= 1
+    current_sum += list[idx]
 
     largest_sum = current_sum if current_sum > largest_sum
   end
