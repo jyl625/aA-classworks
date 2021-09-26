@@ -9,6 +9,10 @@ class MinMaxStack
     @store.empty?
   end
 
+  def size
+    @store.length
+  end
+
   def push(val)
     @store.push( {
       value: val
