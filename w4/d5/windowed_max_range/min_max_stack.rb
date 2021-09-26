@@ -25,6 +25,14 @@ class MinMaxStack
     @store.peek[:value] unless empty?
   end
 
+  def min
+    @store.peek[:min] unless empty?
+  end
+
+  def max
+    @store.peek[:max] unless empty?
+  end
+
 
   private
 
