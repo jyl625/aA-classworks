@@ -1,9 +1,10 @@
 class Integer
-  # Integer#hash already implemented for you
+  # Integer#hash already implemented for you 
 end
 
 class Array
   def hash
+    self.map {|ele| ele.to_s(2)}.join.to_i.hash
   end
 end
 
