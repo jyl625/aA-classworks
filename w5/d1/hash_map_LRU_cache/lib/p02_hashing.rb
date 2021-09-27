@@ -4,7 +4,17 @@ end
 
 class Array
   def hash
-    self.map {|ele| ele.to_s(2)}.join.to_i.hash
+    # self.map {|ele| ele.to_s(2)}.join.to_i.hash
+    bytes_arr = self.map do |ele|
+      if ele.is_a?(Integer)
+        ele.to_s.bytes
+      elsif ele.is_a?(String)
+        ele.bytes
+      elsif ele.is_a?(Symbol)
+        (":"+ele.to_s).bytes
+      end
+    end
+    bytes_arr.flatten.map {|ele| ele.to_s(2)}.join.to_i.hash
   end
 end
 
