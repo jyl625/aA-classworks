@@ -12,9 +12,11 @@ class HashMap
   end
 
   def set(key, val)
+    @store[bucket(key)].append(key, val)
   end
 
   def get(key)
+    @store[bucket(key)].get(key)
   end
 
   def delete(key)
@@ -45,5 +47,6 @@ class HashMap
 
   def bucket(key)
     # optional but useful; return the bucket corresponding to `key`
+    key.hash % num_buckets
   end
 end
