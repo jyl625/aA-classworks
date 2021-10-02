@@ -70,6 +70,12 @@ end
 def country_counts
   # For each continent show the continent and number of countries.
   execute(<<-SQL)
+    SELECT
+      continent, COUNT(name)
+    FROM
+      countries
+    GROUP BY
+      continent
   SQL
 end
 
@@ -77,11 +83,38 @@ def populous_country_counts
   # For each continent show the continent and number of countries with
   # populations of at least 10 million.
   execute(<<-SQL)
+    SELECT
+      continent, COUNT(*)
+    FROM
+      (
+        SELECT 
+          *
+        FROM
+          countries
+        WHERE
+          population >= 10000000
+      ) AS big_countries
+    GROUP BY
+      continent
+    
   SQL
 end
 
 def populous_continents
   # List the continents that have a total population of at least 100 million.
   execute(<<-SQL)
+    SELECT
+      continent
+    FROM
+      (
+        SELECT
+          SUM(population), continent
+        FROM
+          countries
+        GROUP BY
+          continent
+      ) AS continent_pops
+    WHERE
+      sum > 100000000
   SQL
 end
