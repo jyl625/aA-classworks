@@ -84,3 +84,8 @@ nav ul li a {
 nav {
   display: inline-block;
 }
+
+body {
+  width: 900px;
+  margin: 0 auto;
+}
