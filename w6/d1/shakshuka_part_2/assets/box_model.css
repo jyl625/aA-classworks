@@ -89,3 +89,38 @@ body {
   width: 900px;
   margin: 0 auto;
 }
+
+section {
+  width: 700px;
+  display: inline-block;
+}
+
+aside {
+  width: 180px;
+  display: inline-block;
+  margin-right: 15px;
+  vertical-align: top;
+}
+
+.ingredients-list li {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+section li {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+input[type=text], select {
+  display: block;
+}
+
+label, #review {
+  display: block;
+}
+
+select {
+  margin: 10px, 0;
+  width: 100px
+}
