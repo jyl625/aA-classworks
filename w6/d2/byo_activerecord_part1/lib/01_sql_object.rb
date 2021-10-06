@@ -69,6 +69,8 @@ class SQLObject
       WHERE
         #{table_name}.id = (?)
     SQL
+
+    parse_all(results).first
   end
 
   def initialize(params = {})
