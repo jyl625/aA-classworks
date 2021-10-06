@@ -21,13 +21,13 @@ class SQLObject
 
   def self.finalize!
 
-    [:name, :id, :owner_id].each do |column|
+    self.columns.each do |column|
       define_method("#{column}") do
-        @attributes[column]
+        attributes[column]
       end 
 
       define_method("#{column}=") do |value|
-        @attributes[column] = value
+        attributes[column] = value
       end 
     end
 
@@ -58,7 +58,14 @@ class SQLObject
   end
 
   def initialize(params = {})
-    # ...
+    params.each do |attribute, val|
+      attribute = attribute.to_sym
+      if self.class.columns.include?(attribute)
+        self.send("#{attribute}=", val)
+      else
+        raise "unknown attribute '#{attribute}'"
+      end
+    end
   end
 
   def attributes
