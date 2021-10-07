@@ -26,5 +26,6 @@ as5 = ArtworkShare.create(artwork_id: a1.id, viewer_id: u3.id)
 as6 = ArtworkShare.create(artwork_id: a2.id, viewer_id: u3.id)
 as7 = ArtworkShare.create(artwork_id: a4.id, viewer_id: u3.id)
 as8 = ArtworkShare.create(artwork_id: a1.id, viewer_id: u4.id)
-
+as9 = ArtworkShare.create(artwork_id: a1.id, viewer_id: u1.id)
+as10 = ArtworkShare.create(artwork_id: a2.id, viewer_id: u1.id)
 

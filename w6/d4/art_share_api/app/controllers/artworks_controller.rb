@@ -1,9 +1,14 @@
 class ArtworksController < ApplicationController
 
   def index
-    arts = Artwork.where(artist_id: params[:user_id])
-    render json: arts
-    # render json: Artwork.all
+    # if params[:user_id]
+      arts_created = Artwork.where(artist_id: params[:user_id])
+      arts_created ||= []
+    # else
+      arts_shared = Artwork.select("artworks.*").joins(:artwork_shares).where(artwork_shares:{viewer_id: params[:user_id]})
+      arts_shared ||= []
+    # end
+    render json: (arts_created + arts_shared)
   end
 
   def create
