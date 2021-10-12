@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
 
-  root to: 'sessions#new'
+  resources :bands
+
+  # root to: 'users#show'
 end

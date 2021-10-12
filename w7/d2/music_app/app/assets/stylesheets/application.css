@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+ h1 {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+ }
+
+ header {
+  display: flex;
+  justify-content: space-between;
+ }
+
+ header a {
+   background-color:silver;
+   border-radius:25%;
+ }

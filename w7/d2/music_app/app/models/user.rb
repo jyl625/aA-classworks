@@ -37,6 +37,12 @@ class User < ApplicationRecord
     password_obj.is_password?(password)
   end
 
+  def reset_session_token!
+    self.session_token = User.generate_session_token
+    #below line is for the error b/c above line saves it already
+    self.save!
+    self.session_token
+  end
 
   private
 
@@ -44,12 +50,6 @@ class User < ApplicationRecord
     self.session_token ||= User.generate_session_token
   end
 
-  def reset_session_token!
-    self.session_token = User.generate_session_token
-    #below line is for the error b/c above line saves it already
-    self.save!
-    self.session_token
-  end
 
   def self.generate_session_token
     SecureRandom::urlsafe_base64

@@ -1,0 +1,14 @@
+<h1><%= @band.name %>'s Page</h1>
+
+<form action="<%= edit_band_url(@band) %>" method="GET">
+  <input type="submit" value="Edit">
+</form>
+
+
+<form action="<%= band_url(@band) %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete">
+</form>
+
+
+<a href="<%= bands_url %>">Back to list</a>
