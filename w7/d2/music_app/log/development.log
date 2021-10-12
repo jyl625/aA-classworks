@@ -270,3 +270,17 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 55ms (Views: 51.3ms | ActiveRecord: 0.5ms)
 
 
+Started GET "/" for ::1 at 2021-10-12 12:54:09 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 199ms (Views: 197.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-10-12 12:54:34 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 69ms (Views: 68.6ms | ActiveRecord: 0.0ms)
+
+
