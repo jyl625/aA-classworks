@@ -1,0 +1,272 @@
+  [1m[35m (340.3ms)[0m  [1m[35mCREATE DATABASE "music_app_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (124.2ms)[0m  [1m[35mCREATE DATABASE "music_app_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (166.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4505726345591715405)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20211012183726)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (11.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20211012183726_create_users.rb:3
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/migrate/20211012183726_create_users.rb:11
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_session_token" ON "users"  ("session_token")[0m
+  ↳ db/migrate/20211012183726_create_users.rb:12
+  [1m[36mActiveRecord::SchemaMigration Create (6.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211012183726"]]
+  ↳ bin/rails:9
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (2.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-10-12 18:44:19.844220"], ["updated_at", "2021-10-12 18:44:19.844220"]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4505726345591715405)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jean/.rbenv/versions/2.5.1/bin/annotate:23
+Started GET "/" for ::1 at 2021-10-12 12:13:32 -0700
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jean/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/jean/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/jean/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (5.1ms)
+Completed 200 OK in 28ms (Views: 14.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-10-12 12:13:38 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/jean/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/jean/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (4.8ms)
+Completed 200 OK in 66ms (Views: 53.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2021-10-12 12:13:51 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 1117ms (Views: 1115.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2021-10-12 12:23:04 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 235ms (Views: 224.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2021-10-12 12:23:25 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 233ms (Views: 232.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2021-10-12 12:23:44 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"user1@email.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 9ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/__better_errors/0a7c8f57adc7aa62/variables" for ::1 at 2021-10-12 12:23:44 -0700
+Started POST "/users" for ::1 at 2021-10-12 12:29:29 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"user1@email.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 2ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/__better_errors/eb5213d550ae9274/variables" for ::1 at 2021-10-12 12:29:29 -0700
+Started GET "/users/new" for ::1 at 2021-10-12 12:31:23 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (21.2ms)
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `html_ssafe' for #<String:0x00007fa582dbf310>
+Did you mean?  html_safe
+               html_safe?:
+  app/helpers/application_helper.rb:4:in `auth_token'
+  app/views/users/new.html.erb:4:in `_app_views_users_new_html_erb___4582878950893952753_70174420934900'
+  app/controllers/users_controller.rb:3:in `new'
+
+Started POST "/__better_errors/eb44321d1c85961b/variables" for ::1 at 2021-10-12 12:31:23 -0700
+Started GET "/users/new" for ::1 at 2021-10-12 12:31:39 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 64ms (Views: 63.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2021-10-12 12:31:46 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"v/xqu+4ZHPL5ie3sb0Evgpt/ITydGYv4n5t3I0hFOxzKsrytJm/MFcBVGSJy5+15NNV65esJG91nqc6+ZLlSYQ==", "user"=>{"email"=>"user1@email.com", "password"=>"[FILTERED]"}}
+No template found for UsersController#create, rendering head :no_content
+Completed 204 No Content in 289ms (ActiveRecord: 0.0ms)
+
+
+  [1m[36mUser Load (10.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/users/new" for ::1 at 2021-10-12 12:32:40 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 59ms (Views: 58.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2021-10-12 12:32:48 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"7+UX8/XKL7Djeuhbozq8NOLzNlzX4J9pWuQoPtDwbbOaq8HlPbz/V9qmHJW+nH7PTVlthaHwD0yi1pGj/AwEzg==", "user"=>{"email"=>"user1@email.com", "password"=>"[FILTERED]"}}
+No template found for UsersController#create, rendering head :no_content
+Completed 204 No Content in 302ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2021-10-12 12:32:51 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"7+UX8/XKL7Djeuhbozq8NOLzNlzX4J9pWuQoPtDwbbOaq8HlPbz/V9qmHJW+nH7PTVlthaHwD0yi1pGj/AwEzg==", "user"=>{"email"=>"user1@email.com", "password"=>"[FILTERED]"}}
+No template found for UsersController#create, rendering head :no_content
+Completed 204 No Content in 270ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2021-10-12 12:34:47 -0700
+
+SyntaxError - syntax error, unexpected tSTRING_BEG, expecting keyword_end
+      render :json "user created"
+                   ^:
+  app/controllers/users_controller.rb:9:in `'
+
+Started POST "/__better_errors/f62efe03b32b0eb4/variables" for ::1 at 2021-10-12 12:34:47 -0700
+Started POST "/users" for ::1 at 2021-10-12 12:35:33 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"7+UX8/XKL7Djeuhbozq8NOLzNlzX4J9pWuQoPtDwbbOaq8HlPbz/V9qmHJW+nH7PTVlthaHwD0yi1pGj/AwEzg==", "user"=>{"email"=>"user1@email.com", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7
+  [1m[36mUser Exists (1.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user1@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "9UlWpVKhBPnUEkfLl0CqMw"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7
+  [1m[36mUser Create (6.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "user1@email.com"], ["password_digest", "$2a$12$K5T.d2HOCIkfiJ7FTDKcluqHgTFKR13AOxm1AUCKqQCbsbtPBKPTu"], ["session_token", "9UlWpVKhBPnUEkfLl0CqMw"], ["created_at", "2021-10-12 19:35:33.900712"], ["updated_at", "2021-10-12 19:35:33.900712"]]
+  ↳ app/controllers/users_controller.rb:7
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 401ms (Views: 0.3ms | ActiveRecord: 25.6ms)
+
+
+  [1m[36mUser Load (46.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/user/new" for ::1 at 2021-10-12 12:39:23 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/user/new"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/new" for ::1 at 2021-10-12 12:39:29 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 87ms (Views: 86.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2021-10-12 12:39:38 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"67YNME7mFgqVzpU5HMAfyW1Ye954XieR5egmUKWGh+We+NsmhpDG7awSYfcBZt0ywvIgBw5Ot7Qd2p/NiXrumA==", "user"=>{"email"=>"user2@email.com", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7
+  [1m[36mUser Exists (4.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user2@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "o7sqNJjhGcB2yZ1PaZZw0g"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "user2@email.com"], ["password_digest", "$2a$12$1yLzuONvGjKldlcVlakloOmsjjT16XzmfFz9Ip2fuLvVLSYaFyLGO"], ["session_token", "o7sqNJjhGcB2yZ1PaZZw0g"], ["created_at", "2021-10-12 19:39:39.318842"], ["updated_at", "2021-10-12 19:39:39.318842"]]
+  ↳ app/controllers/users_controller.rb:7
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 500 Internal Server Error in 553ms (ActiveRecord: 13.5ms)
+
+
+
+NoMethodError - undefined method `user_show' for #<UsersController:0x00007fa58270bb90>
+Did you mean?  users_path:
+  app/controllers/users_controller.rb:9:in `create'
+
+Started POST "/__better_errors/3244bfdeb1b0306c/variables" for ::1 at 2021-10-12 12:39:39 -0700
+Started POST "/__better_errors/3244bfdeb1b0306c/eval" for ::1 at 2021-10-12 12:40:29 -0700
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /Users/jean/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Started GET "/users/new" for ::1 at 2021-10-12 12:40:38 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 78ms (Views: 75.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2021-10-12 12:40:47 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"jH4GIvSgOCWHqFlI73/rX0dxa9qIqR4IdjS8SWP0QgH5MNA0PNbowr50rYby2Smk6NswA/65ji2OBgXUTwgrfA==", "user"=>{"email"=>"user3@email.com", "password"=>"[FILTERED]"}}
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user3@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-lzSyRrid_aT25PUkv-bcA"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7
+  [1m[36mUser Create (2.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "user3@email.com"], ["password_digest", "$2a$12$aIHW3ZidXWn8yzrGjeUaUuPfqnRtMX5MIBDRQqbbgD7z9nYkMT2Bm"], ["session_token", "-lzSyRrid_aT25PUkv-bcA"], ["created_at", "2021-10-12 19:40:47.784484"], ["updated_at", "2021-10-12 19:40:47.784484"]]
+  ↳ app/controllers/users_controller.rb:7
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:7
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 382ms (ActiveRecord: 18.6ms)
+
+
+Started GET "/users/3" for ::1 at 2021-10-12 12:40:47 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 55ms (Views: 51.3ms | ActiveRecord: 0.5ms)
+
+
