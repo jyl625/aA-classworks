@@ -4,10 +4,21 @@
   <input type="submit" value="Edit">
 </form>
 
+<ul>
+  <% @band.albums.each do |album| %>
+    <li>Album Title: <a href="<%=album_url(album)%>"><%= album.title %></a> </li>
+    <ul>
+      <li>Year: <%= album.year %></li>
+      <li><%= album.live ? "Live" : "Studio" %> Album</li>
+    </ul>
+  <% end %>
+</ul>
+
 
 <form action="<%= band_url(@band) %>" method="POST">
+  <%=auth_token%>
   <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete">
+  <input type="submit" value="Delete Band">
 </form>
 
 

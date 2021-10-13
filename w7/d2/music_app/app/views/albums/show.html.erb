@@ -1,0 +1,9 @@
+<h1><%= @album.title %></h1>
+
+<ul>
+  <li>Year: <%= @album.year %></li>
+  <li>Band: <%= @album.band.name %></li>
+  <li><%= @album.live ? "Live" : "Studio" %> Album</li>
+</ul>
+
+<a href="<%=band_url(@album.band_id)%>">Back to Band's Album List</a>
