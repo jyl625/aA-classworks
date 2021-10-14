@@ -46,14 +46,35 @@ header a, header a:hover, header a:focus, header a:active {
   border-radius: 50%;
 }
 
+.menu-header:hover .badge {
+  background-color: red;
+}
+
+.menu {
+  position: relative;
+}
+
+.menu:hover {
+  background-color: black;
+}
+
 .menu-items {
   position: absolute;
   background-color: white;
   display:none;
+  width: 230px;
+}
+
+.menu-items li {
+  padding: 5px 10px;
+  border: 1px solid black;
 }
 
 .menu-header:hover .menu-items {
   display: block;
+}
 
+.menu-items li:hover {
+  background-color: lightgrey;
 }
 
