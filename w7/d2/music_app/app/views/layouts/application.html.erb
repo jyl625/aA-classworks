@@ -15,8 +15,8 @@
       <div>
         <% if logged_in? %>
           <form action="<%= session_url %>" method="POST">
-            <input type="hidden" name="_method" value="DELETE">
             <%= auth_token %>
+            <input type="hidden" name="_method" value="DELETE">
             <input type="submit" value="Log out!">
           </form>
         <% else %>

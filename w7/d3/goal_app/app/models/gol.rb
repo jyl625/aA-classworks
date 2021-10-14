@@ -1,0 +1,2 @@
+class Gol < ApplicationRecord
+end
