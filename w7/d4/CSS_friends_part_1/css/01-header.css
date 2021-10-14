@@ -5,3 +5,38 @@ body {
   font-family: Roboto, sans-serif;
   font-size: 16px
 }
+
+.header-nav {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: red;
+}
+
+.header-logo {
+
+}
+
+.header-list {
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+header a, header a:hover {
+  display: block;
+  padding: 10px 20px;
+}
+
+header a:hover {
+  background-color:black;
+}
+
+
+header a, header a:hover, header a:focus, header a:active {
+      text-decoration: none;
+      color: white;
+ }
