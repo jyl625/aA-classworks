@@ -23,8 +23,8 @@ body {
   display:flex;
   justify-content: space-around;
   align-items: center;
+  font-weight: 500;
 }
-
 
 header a, header a:hover {
   display: block;
@@ -35,8 +35,25 @@ header a:hover {
   background-color:black;
 }
 
-
 header a, header a:hover, header a:focus, header a:active {
-      text-decoration: none;
-      color: white;
- }
+  text-decoration: none;
+  color: white;
+}
+
+.badge {
+  background-color: black;
+  padding: 1px 6px;
+  border-radius: 50%;
+}
+
+.menu-items {
+  position: absolute;
+  background-color: white;
+  display:none;
+}
+
+.menu-header:hover .menu-items {
+  display: block;
+
+}
+
