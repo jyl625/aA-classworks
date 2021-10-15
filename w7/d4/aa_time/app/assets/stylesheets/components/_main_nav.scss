@@ -1,0 +1,47 @@
+.main-nav {
+  display: flex;
+  justify-content:space-between;
+}
+
+.left-nav > ul,
+.right-nav > ul {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.left-nav {
+
+  > ul {
+    > li {
+      padding: 20px;
+    }
+  }
+
+  span {
+
+  }
+}
+
+.right-nav  {
+
+  > ul {
+
+    > li {
+      padding: 20px 10px;
+    }
+
+    > li:last-of-type {
+  
+    }
+  }
+  
+  i {
+
+  }
+}
+
+.left-nav > ul > li:hover,
+.right-nav > ul > li:last-of-type:hover {
+  background-color: $darkest-blue;
+}
