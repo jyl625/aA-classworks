@@ -14,7 +14,7 @@ Array.prototype.bubbleSort = function() {
     }
   }
   return this;
-}
+};
 
 // let arr = [5,2,-4,2,8,1];
 // console.log(arr.bubbleSort());
@@ -39,7 +39,7 @@ String.prototype.substrings = function () {
     }
   }
   return result;
-}
+};
 
 // String.prototype.substrings = function () {
 //   let result = [];

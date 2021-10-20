@@ -32,13 +32,13 @@ Array.prototype.myReduce = function(cb, result) {
   
   let arr = this;
   if (result === undefined) {
-    result = this[0]
+    result = this[0];
     arr = this.slice(1);
-  };
+  }
   
   arr.myEach(el => result = cb(result, el));
   return result;
-}
+};
 
 // let answer = [1, 2, 3].myReduce(function(acc, el) {
 //   return acc + el;

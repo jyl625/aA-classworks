@@ -7,7 +7,7 @@ function range(start, end) {
 
 function sumRec(arr) {
   if (arr.length === 1) { return arr[0]; }
-  return arr[0] + sumRec(arr.slice(1))
+  return arr[0] + sumRec(arr.slice(1));
 }
 
 // console.log(sumRec([1,2,3,4,5]));
@@ -22,9 +22,9 @@ function sumRec(arr) {
 function exponent(base, exp) {
   if (exp === 0) { return 1; }
   if (exp % 2 === 0) {
-    return exponent(base, exp/2) ** 2;
+    return exponent(base, exp / 2) * exponent(base, exp / 2);
   } else {
-    return base * (exponent(base, (exp - 1)/2) ** 2);
+    return base * (exponent(base, (exp - 1) / 2) * exponent(base, (exp - 1) / 2));
   }
 }
 
