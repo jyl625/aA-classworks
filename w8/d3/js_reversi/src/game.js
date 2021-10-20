@@ -12,7 +12,7 @@ if (typeof window === 'undefined'){
 function Game () {
   this.board = new Board();
   this.turn = "black";
-};
+}
 
 /**
  * Flips the current turn to the opposite color.

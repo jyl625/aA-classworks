@@ -9,7 +9,7 @@ if (typeof window === 'undefined'){
  * and two white pieces at [3, 3] and [4, 4]
  */
 function _makeGrid () {
-  let grid = []
+  let grid = [];
 
   for(let i = 0; i < 8; i++){
     grid.push(new Array(8));
@@ -97,9 +97,32 @@ Board.prototype.isOccupied = function (pos) {
  * Returns empty array if no pieces of the opposite color are found.
  */
 Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip){
-  if this.isOccupied(pos) {
+  let x = pos[0];
+  let y = pos[1];
+
+  let dx = dir[0];
+  let dy = dir[1];
+
+  let nextPos = [x + dx, y + dy];
+
+  if (!piecesToFlip) {
+    piecesToFlip = [];
+  } else {
+    piecesToFlip.push(pos);
+  }
+
+  if (!this.isValidPos(nextPos)) {
     return [];
   }
+  if (!this.isOccupied(nextPos)) {
+    return [];
+  }
+  if (this.isMine(nextPos, color)) {
+    return piecesToFlip;
+  }
+
+  return this._positionsToFlip(nextPos, color, dir, piecesToFlip);
+
 };
 
 /**
@@ -108,6 +131,17 @@ Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip){
  * color being flipped.
  */
 Board.prototype.validMove = function (pos, color) {
+  let possibleMoves = [];
+  if (!this.isOccupied(pos)) {
+    for(let i = 0; i < Board.DIRS.length; i++){
+      if (this._positionsToFlip(pos, color, Board.DIRS[i]).length > 0) {
+        return true;
+      }
+    }
+  }
+  return false;
+
+
 };
 
 /**
