@@ -151,6 +151,38 @@ Board.prototype.validMove = function (pos, color) {
  * Throws an error if the position represents an invalid move.
  */
 Board.prototype.placePiece = function (pos, color) {
+  
+  if (this.validMove(pos, color)) {
+    let x = pos[0];
+    let y = pos[1];
+    this.grid[x][y] = new Piece(color);
+    let flippedPositions = [];
+
+    for(let i = 0; i < Board.DIRS.length; i++){
+      // console.log(flippedPositions);
+      // console.log(Board.DIRS);
+      // console.log(typeof flippedPositions);
+      // console.log(this._positionsToFlip(pos, color, Board.DIRS[i]));
+      flippedPositions = flippedPositions.concat(this._positionsToFlip(pos, color, Board.DIRS[i]));
+    }
+    // console.log(flippedPositions);
+    console.log(flippedPositions);
+
+    for(let j = 0; j < flippedPositions.length; j++) {
+      let flippedPosition = flippedPositions[j];
+      let flipX = flippedPosition[0];
+      let flipY = flippedPosition[1];
+      // console.log(flipX);
+      // console.log(flipY);
+      // if (this.isValidPos(flippedPosition)) {
+      this.grid[flipX][flipY].flip();
+      // }
+    }
+    
+  } else {
+    throw new Error('Invalid move!');
+  }
+
 };
 
 /**
@@ -158,12 +190,27 @@ Board.prototype.placePiece = function (pos, color) {
  * the Board for a given color.
  */
 Board.prototype.validMoves = function (color) {
+  let valMoves = [];
+  for (let x = 0; x < this.grid.length; x++) {
+    for (let y = 0; y < this.grid[x].length; y++) {
+      if (this.validMove([x,y], color)) {
+        valMoves.push([x,y]);
+      }
+    }
+  }
+
+  return valMoves;
 };
 
 /**
  * Checks if there are any valid moves for the given color.
  */
 Board.prototype.hasMove = function (color) {
+  if (this.validMoves(color).length > 0) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 
@@ -173,16 +220,28 @@ Board.prototype.hasMove = function (color) {
  * the black player are out of moves.
  */
 Board.prototype.isOver = function () {
+  return !(this.hasMove('black') && this.hasMove('white'));
 };
-
-
-
 
 /**
  * Prints a string representation of the Board to the console.
- */
-Board.prototype.print = function () {
-};
+//  */
+// Board.prototype.print = function () {
+//       for(let i=0; i<this.grid.length; i++){
+//         for(let j=0; j<this.grid[0].length; j++){
+//           // console.log(this.validMoves('black'));
+//           // console.log([i,j])
+//             if (this.validMove([i,j], 'black')){
+//                 process.stdout.write('[*]');
+//             } else if(this.grid[i][j] === undefined){
+//                 process.stdout.write('[ ]');
+//             } else {
+//                 process.stdout.write(`[${this.grid[i][j].toString()}]`);
+//             }
+//         }
+//         process.stdout.write("\n")
+//     }
+// };
 
 
 // DON'T TOUCH THIS CODE

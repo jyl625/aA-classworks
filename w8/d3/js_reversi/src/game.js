@@ -27,6 +27,25 @@ let rlInterface;
 /**
  * Creates a readline interface and starts the run loop.
  */
+
+Game.prototype.print = function () {
+  for(let i=0; i<this.board.grid.length; i++){
+    for(let j=0; j<this.board.grid[0].length; j++){
+      // console.log(this.validMoves('black'));
+      // console.log([i,j])
+        if (this.board.validMove([i,j], this.turn)){
+            process.stdout.write('[*]');
+        } else if(this.board.grid[i][j] === undefined){
+            process.stdout.write('[ ]');
+        } else {
+            process.stdout.write(`[${this.board.grid[i][j].toString()}]`);
+        }
+    }
+    process.stdout.write("\n")
+}
+};
+
+
 Game.prototype.play = function () {
   rlInterface = readline.createInterface({
     input: process.stdin,
@@ -45,7 +64,8 @@ Game.prototype.play = function () {
  * attempts to make the play.
  */
 Game.prototype.playTurn = function (callback) {
-  this.board.print();
+  // this.board.print();
+  this.print();
   rlInterface.question(
     `${this.turn}, where do you want to move?`,
     handleResponse.bind(this)
