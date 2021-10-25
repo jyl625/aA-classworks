@@ -1,27 +1,14 @@
-Function.prototype.inherits = function (ParentClass) {
-  var Surrogate = function () {};
-
-  Surrogate.prototype = ParentClass.prototype;
-
-  this.prototype = new Surrogate();
-
-  this.prototype.constructor = this;
-};
-
-class Parent {
-  contructor(val) {
-    this.parentValue = val;
+const Util = {
+  inherits(childClass, parentClass) {
+    function Surrogate() {};
+  
+    Surrogate.prototype = parentClass.prototype;
+  
+    childClass.prototype = new Surrogate();
+  
+    childClass.prototype.constructor = childClass;
   }
 }
 
-class Child {
-  contructor(val) {
-    Parent.call(this, 10);
-    this.childValue = val;
-  }
-}
 
-Child.inherits(Parent);
-
-
-module.export = Child;
+module.exports = Util;

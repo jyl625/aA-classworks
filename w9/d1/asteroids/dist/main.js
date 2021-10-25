@@ -15,7 +15,17 @@
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("let Child = __webpack_require__(Object(function webpackMissingModule() { var e = new Error(\"Cannot find module './src/utils.js'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));\n\nconsole.log(\"Webpack is working!\");\n\nvar child = new Child(2);\n\n\nconsole.log(child.parentValue);\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const Util = __webpack_require__(/*! ./utils.js */ \"./src/utils.js\");\n\nfunction Parent(value){\n    this.value = value;\n}\n\nParent.prototype.say = function(){\n    console.log(\"this is the parent\");\n};\n\n\nfunction Child(value){\n    Parent.call(this, value);\n}\n\nChild.prototype.yell = function(){\n    console.log(\"this is the child\");\n};\n\nUtil.inherits(Child, Parent);\n\nlet child = new Child(2);\nconsole.log(child);\nchild.say();\n\n\nconsole.log(child);\n\nconsole.log(\"Webpack is working!\");\n\nconsole.log('hello');\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/utils.js":
+/*!**********************!*\
+  !*** ./src/utils.js ***!
+  \**********************/
+/***/ ((module) => {
+
+eval("const Util = {\n  inherits(childClass, parentClass) {\n    function Surrogate() {};\n  \n    Surrogate.prototype = parentClass.prototype;\n  \n    childClass.prototype = new Surrogate();\n  \n    childClass.prototype.constructor = childClass;\n  }\n}\n\n\nmodule.exports = Util;\n\n//# sourceURL=webpack:///./src/utils.js?");
 
 /***/ })
 
