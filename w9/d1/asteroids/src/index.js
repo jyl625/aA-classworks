@@ -1,31 +1,33 @@
-const Util = require("./utils.js");
+const MovingObject = require('./moving_object.js');
 
-function Parent(value){
-    this.value = value;
-}
+window.MovingObject = MovingObject;
 
-Parent.prototype.say = function(){
-    console.log("this is the parent");
+MovingObject.prototype.draw = function (ctx) {
+  ctx.fillStyle = this.color;
+  ctx.beginPath();
+
+  ctx.arc(
+    this.pos[0],
+    this.pos[1],
+    this.radius,
+    0,
+    2 * Math.PI,
+    false
+  );
+
+  ctx.fill();
 };
 
-
-function Child(value){
-    Parent.call(this, value);
-}
-
-Child.prototype.yell = function(){
-    console.log("this is the child");
+MovingObject.prototype.move = function () {
+  this.pos = [this.pos[0] + this.vel[0], this.pos[1] + this.vel[1]];
 };
 
-Util.inherits(Child, Parent);
+document.addEventListener("DOMContentLoaded", function () {
+  const canvas = document.getElementById('game-canvas');
+  canvas.width = 500;
+  canvas.height = 500;
+  const ctx = canvas.getContext('2d');
 
-let child = new Child(2);
-console.log(child);
-child.say();
-
-
-console.log(child);
-
-console.log("Webpack is working!");
-
-console.log('hello');
+  // let obj = new MovingObject({ pos: [30, 30], vel: [10, 10], radius: 10, color: 'red' })
+  // obj.draw(ctx);
+});

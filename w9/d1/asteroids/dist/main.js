@@ -15,17 +15,17 @@
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const Util = __webpack_require__(/*! ./utils.js */ \"./src/utils.js\");\n\nfunction Parent(value){\n    this.value = value;\n}\n\nParent.prototype.say = function(){\n    console.log(\"this is the parent\");\n};\n\n\nfunction Child(value){\n    Parent.call(this, value);\n}\n\nChild.prototype.yell = function(){\n    console.log(\"this is the child\");\n};\n\nUtil.inherits(Child, Parent);\n\nlet child = new Child(2);\nconsole.log(child);\nchild.say();\n\n\nconsole.log(child);\n\nconsole.log(\"Webpack is working!\");\n\nconsole.log('hello');\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\n\nwindow.MovingObject = MovingObject;\n\nMovingObject.prototype.draw = function (ctx) {\n  ctx.fillStyle = this.color;\n  ctx.beginPath();\n\n  ctx.arc(\n    this.pos[0],\n    this.pos[1],\n    this.radius,\n    0,\n    2 * Math.PI,\n    false\n  );\n\n  ctx.fill();\n};\n\nMovingObject.prototype.move = function () {\n  this.pos = [this.pos[0] + this.vel[0], this.pos[1] + this.vel[1]];\n};\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n  const canvas = document.getElementById('game-canvas');\n  canvas.width = 500;\n  canvas.height = 500;\n  const ctx = canvas.getContext('2d');\n\n  // let obj = new MovingObject({ pos: [30, 30], vel: [10, 10], radius: 10, color: 'red' })\n  // obj.draw(ctx);\n});\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
-/***/ "./src/utils.js":
-/*!**********************!*\
-  !*** ./src/utils.js ***!
-  \**********************/
+/***/ "./src/moving_object.js":
+/*!******************************!*\
+  !*** ./src/moving_object.js ***!
+  \******************************/
 /***/ ((module) => {
 
-eval("const Util = {\n  inherits(childClass, parentClass) {\n    function Surrogate() {};\n  \n    Surrogate.prototype = parentClass.prototype;\n  \n    childClass.prototype = new Surrogate();\n  \n    childClass.prototype.constructor = childClass;\n  }\n}\n\n\nmodule.exports = Util;\n\n//# sourceURL=webpack:///./src/utils.js?");
+eval("// const obj = new MovingObject({pos: [30,30], vel: [10,10], radius: []})\nfunction MovingObject(data) {\n  this.pos = data.pos;\n  this.vel = data.vel;\n  this.radius = data.radius;\n  this.color = data.color;\n}\n\n\n\n// console.log(new MovingObject({\n//   pos: [30, 30],\n//   vel: [10, 10],\n//   radius: 5,\n//   color: \"#00FF00\"\n// }));\n\nmodule.exports = MovingObject;\n\n//# sourceURL=webpack:///./src/moving_object.js?");
 
 /***/ })
 
