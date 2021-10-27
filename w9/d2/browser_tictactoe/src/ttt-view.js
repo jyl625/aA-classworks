@@ -41,10 +41,10 @@ class View {
     console.log([row,col]);
     console.log(this.game);
     console.log(this.game.isOver());
+    square.innerHTML = ` ${this.game.currentPlayer}`;
     this.game.playMove([row, col]);
     
     
-    square.innerHTML = ` ${this.game.currentPlayer}`;
     
     if (this.game.isOver()) {
       this.game.board.print();
