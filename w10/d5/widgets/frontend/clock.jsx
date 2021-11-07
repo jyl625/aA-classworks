@@ -8,11 +8,14 @@ class Clock extends React.Component {
     }
   }
 
-
   render() {
     return (
       <h1>Clock Title</h1>
     )
+  }
+
+  tick() {
+    this.setState({time: new Date()});
   }
 }
 
