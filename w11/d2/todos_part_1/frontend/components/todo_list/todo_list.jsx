@@ -7,16 +7,38 @@ export default (props) => {
 
   return (
     <div>
-      <h3>Todo List goes here!</h3>
-      <ul>{props.todos.map((todo) => {
-        return <TodoListItem 
-          todo={todo} 
-          key={todo.id} 
-          removeTodo={props.removeTodo} 
-          receiveTodo={props.receiveTodo}/>
-      })}</ul>
-      <TodoForm receiveTodo={props.receiveTodo}/>
+      <h3>Here's your ToDo List!</h3>
+      <TodoForm receiveTodo={props.receiveTodo} />
+      <table>
+        <thead>
+          <th>Title</th>
+          <th>Body</th>
+          <th>Status</th>
+          <th>Delete?</th>
+        </thead>
+          <tbody>
+            {props.todos.map((todo) => {
+              return <TodoListItem
+                todo={todo}
+                key={todo.id}
+                removeTodo={props.removeTodo}
+                receiveTodo={props.receiveTodo} />
+            })}
+          </tbody>
+      </table>
+      
     </div>
     
   )
 }
+
+<table>
+  <thead>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

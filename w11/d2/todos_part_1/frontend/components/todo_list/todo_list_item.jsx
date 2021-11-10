@@ -40,12 +40,12 @@ class TodoListItem extends React.Component {
 
   render() {
     return (
-      <div>
-        <h3>{this.props.todo.title}</h3>
-        <p>{this.props.todo.body}</p>
-        <a href="#" onClick={this.handleStatusChange}>{this.props.todo.done ? "Done" : "Not Started"}</a>
-        <a href="#" onClick={this.handleDelete}>Delete</a>
-      </div>
+      <tr>
+        <td>{this.props.todo.title}</td>
+        <td>{this.props.todo.body}</td>
+        <td><a href="#" onClick={this.handleStatusChange}>{this.props.todo.done ? "Done" : "Not Started"}</a></td>
+        <td><a href="#" onClick={this.handleDelete}>Delete</a></td>
+      </tr>
     )
   }
 
