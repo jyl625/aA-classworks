@@ -1,6 +1,7 @@
 import configureStore from './frontend/store/store'
 import React from 'react';
 import ReactDOM from 'react-dom';
+import allTodos from './frontend/reducers/selectors';
 
 import Root from './frontend/components/root'
 
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   window.store = store
+  window.allTodos = allTodos;
   window.receiveTodos = receiveTodos;
   window.receiveTodo = receiveTodo;
   window.removeTodo = removeTodo;
@@ -22,5 +24,4 @@ document.addEventListener("DOMContentLoaded", () => {
   window.receiveSteps = receiveSteps;
   window.receiveStep = receiveStep;
   window.removeStep = removeStep;
-  // console.log(window.receiveTodos)
 })
