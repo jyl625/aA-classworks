@@ -29,7 +29,16 @@ const todosReducer = (state = initialState, action) => {
       let todosObj = getTodosObject(action.todos);
       return todosObj
     case RECEIVE_TODO:
-      return state
+
+      // is this necessary?!?!?!
+      Object.freeze(state);
+      // let currentState = Object.assign({}, state);
+      let newTodo = {}
+      newTodo[action.todo.id] = action.todo;
+
+      let allTodos = Object.assign(newTodo, state);
+
+      return allTodos
     default:
       return state;
   }
