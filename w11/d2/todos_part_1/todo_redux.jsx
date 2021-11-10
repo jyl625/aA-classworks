@@ -1,7 +1,7 @@
 import configureStore from './frontend/store/store'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { receiveTodos, receiveTodo } from './frontend/actions/todo_actions.js'
+import { receiveTodos, receiveTodo, removeTodo } from './frontend/actions/todo_actions.js'
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -12,5 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.store = store
   window.receiveTodos = receiveTodos;
   window.receiveTodo = receiveTodo;
+  window.removeTodo = removeTodo;
   // console.log(window.receiveTodos)
 })

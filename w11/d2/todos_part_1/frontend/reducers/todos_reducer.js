@@ -1,4 +1,4 @@
-import { RECEIVE_TODOS, RECEIVE_TODO } from '../actions/todo_actions'
+import { RECEIVE_TODOS, RECEIVE_TODO, REMOVE_TODO } from '../actions/todo_actions'
 
 const initialState = {
   1: {
@@ -24,21 +24,18 @@ function getTodosObject(todosArr) {
 }
 
 const todosReducer = (state = initialState, action) => {
+  Object.freeze(state);
+  let nextState = Object.assign({},state)
   switch (action.type) {
     case RECEIVE_TODOS:
-      let todosObj = getTodosObject(action.todos);
-      return todosObj
+      nextState = getTodosObject(action.todos);
+      return nextState
     case RECEIVE_TODO:
-
-      // is this necessary?!?!?!
-      Object.freeze(state);
-      // let currentState = Object.assign({}, state);
-      let newTodo = {}
-      newTodo[action.todo.id] = action.todo;
-
-      let allTodos = Object.assign(newTodo, state);
-
-      return allTodos
+      nextState[action.todo.id] = action.todo;
+      return nextState;
+    case REMOVE_TODO:
+      delete nextState[action.todo.id];
+      return nextState;
     default:
       return state;
   }
