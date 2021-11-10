@@ -26,19 +26,7 @@ export default (props) => {
             })}
           </tbody>
       </table>
-      
     </div>
     
   )
 }
-
-<table>
-  <thead>
-    <th></th>
-  </thead>
-  <tbody>
-    <tr>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
