@@ -17,7 +17,7 @@ const newTodos = [
   { id: 2, title: 'asdf', body: 'asdfasdf', done: false }
 ];
 
-v
+v 
 
 store.dispatch(receiveTodos(newTodos));
 store.dispatch(receiveSteps(newSteps));
