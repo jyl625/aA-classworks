@@ -11,20 +11,22 @@ export default (props) => {
       <TodoForm receiveTodo={props.receiveTodo} />
       <table>
         <thead>
-          <th>Title</th>
-          <th>Body</th>
-          <th>Status</th>
-          <th>Delete?</th>
+          <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Body</th>
+            <th>Delete</th>
+          </tr>
         </thead>
-          <tbody>
-            {props.todos.map((todo) => {
-              return <TodoListItem
-                todo={todo}
-                key={todo.id}
-                removeTodo={props.removeTodo}
-                receiveTodo={props.receiveTodo} />
-            })}
-          </tbody>
+        <tbody>
+          {props.todos.map((todo) => {
+            return <TodoListItem
+              todo={todo}
+              key={todo.id}
+              removeTodo={props.removeTodo}
+              receiveTodo={props.receiveTodo} />
+          })}
+        </tbody>
       </table>
     </div>
     
