@@ -1,0 +1,98 @@
+Started GET "/" for ::1 at 2021-11-11 15:03:50 -0800
+
+ActiveRecord::NoDatabaseError - FATAL:  database "Todos_development" does not exist:
+
+Started POST "/__better_errors/7fb3a49dcc5cea66/variables" for ::1 at 2021-11-11 15:03:50 -0800
+  [1m[35m (94.3ms)[0m  [1m[35mCREATE DATABASE "Todos_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (28.5ms)[0m  [1m[35mCREATE DATABASE "Todos_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2021-11-11 15:07:40 -0800
+
+SyntaxError - syntax error, unexpected ':', expecting keyword_end
+    render: root
+          ^:
+  app/controllers/static_pages_controller.rb:3:in `'
+
+Started POST "/__better_errors/93e2347c3de28255/variables" for ::1 at 2021-11-11 15:07:40 -0800
+Started GET "/" for ::1 at 2021-11-11 15:08:01 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html within layouts/application
+  Rendered static_pages/root.html within layouts/application (3.0ms)
+Completed 200 OK in 1661ms (Views: 1660.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-11 15:10:36 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html within layouts/application
+  Rendered static_pages/root.html within layouts/application (0.5ms)
+Completed 200 OK in 732ms (Views: 731.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-11 15:12:26 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html within layouts/application
+  Rendered static_pages/root.html within layouts/application (0.2ms)
+Completed 200 OK in 223ms (Views: 222.9ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (26.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6332679603831330120)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateTodoItems (20211111231404)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (12.2ms)[0m  [1m[35mCREATE TABLE "todo_items" ("id" bigserial primary key, "title" character varying NOT NULL, "body" character varying NOT NULL, "done" boolean DEFAULT FALSE NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20211111231404_create_todo_items.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211111231404"]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-11-11 23:15:41.565092"], ["updated_at", "2021-11-11 23:15:41.565092"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(6332679603831330120)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mTodoItem Load (1.2ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTodoItem Create (1.6ms)[0m  [1m[32mINSERT INTO "todo_items" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "some title"], ["body", "another body"], ["created_at", "2021-11-11 23:19:03.027739"], ["updated_at", "2021-11-11 23:19:03.027739"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTodoItem Load (0.8ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items"[0m
+  [1m[36mTodoItem Load (0.6ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTodoItem Create (0.7ms)[0m  [1m[32mINSERT INTO "todo_items" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "sdofmsdf"], ["body", "sdlfjsdlkfj"], ["created_at", "2021-11-11 23:22:39.508046"], ["updated_at", "2021-11-11 23:22:39.508046"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTodoItem Load (1.3ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items"[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:8
+  [1m[36mTodoItem Create (1.0ms)[0m  [1m[32mINSERT INTO "todo_items" ("title", "body", "done", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "clean room"], ["body", "lsdjflkjsdlf"], ["done", true], ["created_at", "2021-11-11 23:42:39.646043"], ["updated_at", "2021-11-11 23:42:39.646043"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:8
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:8
+  [1m[36mTodoItem Create (0.3ms)[0m  [1m[32mINSERT INTO "todo_items" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "wash car"], ["body", "sdlkfjsdkfjjsdfjksdkl"], ["created_at", "2021-11-11 23:42:39.648751"], ["updated_at", "2021-11-11 23:42:39.648751"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:8
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:8
+  [1m[36mTodoItem Create (0.3ms)[0m  [1m[32mINSERT INTO "todo_items" ("title", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "finish project"], ["body", "sdlkfjsdkfjsdjlkllsdkjsdfjksdkl"], ["created_at", "2021-11-11 23:42:39.649893"], ["updated_at", "2021-11-11 23:42:39.649893"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:8
+  [1m[36mTodoItem Load (0.5ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items"[0m
