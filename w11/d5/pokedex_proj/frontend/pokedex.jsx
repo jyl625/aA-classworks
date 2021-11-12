@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
+import Root from './components/root';
 
 // ========= TESTING ONLY ========= //
 import { receiveAllPokemon, requestAllPokemon} from './actions/pokemon_actions'
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const rootEle = document.getElementById('root');
   const store = configureStore();
 
-  ReactDOM.render(<h1>Pokedex</h1>, rootEle);
+  ReactDOM.render(<Root store={store} />, rootEle);
 
   // ========= TESTING ONLY ========= //
   window.receiveAllPokemon = receiveAllPokemon;
