@@ -4,7 +4,7 @@ class Api::SessionsController < ApplicationController
 
     if @user
       login!(@user)
-      render :show
+      redirect_to api_user_url(@user)
     else
       render json: ['Invalid username or password.'], status: 422
     end
@@ -12,10 +12,10 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     if !current_user
-      render json: ['User not found'], status: 404
+      render json: ['No logged in user!'], status: 404
     else
       logout!
-      render {}
+      render json: {}
     end
   end 
 end

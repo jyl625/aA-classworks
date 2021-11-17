@@ -6,12 +6,12 @@ class Api::UsersController < ApplicationController
       # redirect_to user_url(@user)
       render :show
     else
-      render json: ['Invalid username or password.'], status: 422
+      render json: @user.errors.full_messages, status: 422
     end
   end
 
   def show
-    @user = User.find(params:[id])
+    @user = User.find_by(id: params[:id])
     if @user
       render :show
     else
