@@ -19,4 +19,10 @@ export const receiveErrors = (errors) => ({
 });
 
 export const login = (user) => (dispatch) => login(user)
-.then(user => dispatch(receiveCurrentUser(user)))
+  .then(user => dispatch(receiveCurrentUser(user)))
+
+export const logout = () => (dispatch) => logout(user)
+  .then(() => dispatch(logoutCurrentUser()));
+
+export const signup = (user) => (dispatch) => signup(user)
+  .then(user => dispatch(signup(user)));
