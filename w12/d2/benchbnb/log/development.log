@@ -508,3 +508,186 @@ Processing by Api::SessionsController#destroy as JSON
 Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2021-11-16 16:59:18 -0800
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rougecomet/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 654ms (Views: 654.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/users" for ::1 at 2021-11-16 17:00:51 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"consolePeep", "password"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "consolePeep"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "P8vy13nx5GGccrptdzFyWg"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "consolePeep"], ["password_digest", "$2a$12$AIbAeYbu20P3I0xYzipBkuP6jHE7rrQZL1GWmE8C5hnB/vsiaepk."], ["session_token", "P8vy13nx5GGccrptdzFyWg"], ["created_at", "2021-11-17 01:00:51.484320"], ["updated_at", "2021-11-17 01:00:51.484320"]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.2ms)
+  Rendered api/users/show.json.jbuilder (0.9ms)
+Completed 200 OK in 215ms (Views: 2.2ms | ActiveRecord: 8.2ms)
+
+
+Started POST "/api/session" for ::1 at 2021-11-16 17:01:10 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"consolePeep", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "consolePeep"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22
+Redirected to http://localhost:3000/api/users/4
+Completed 302 Found in 192ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/api/users/4" for ::1 at 2021-11-16 17:01:10 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:14
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.2ms)
+  Rendered api/users/show.json.jbuilder (0.8ms)
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-11-16 17:01:30 -0800
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "P8vy13nx5GGccrptdzFyWg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:42
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "consolePeep"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "tVwNpmQKOpV4zLIcOgOasg"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "tVwNpmQKOpV4zLIcOgOasg"], ["updated_at", "2021-11-17 01:01:30.295356"], ["id", 4]]
+  ↳ app/models/user.rb:42
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:42
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/api/session" for ::1 at 2021-11-16 17:01:46 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"consolePeep", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "consolePeep"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22
+Completed 422 Unprocessable Entity in 191ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2021-11-16 17:04:12 -0800
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rougecomet/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 317ms (Views: 316.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-11-16 17:04:19 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"consolePeep", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "consolePeep"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22
+Completed 200 OK in 203ms (Views: 0.2ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/" for ::1 at 2021-11-16 17:05:10 -0800
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rougecomet/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 310ms (Views: 309.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-11-16 17:05:41 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"consolePeep", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "consolePeep"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22
+Completed 422 Unprocessable Entity in 204ms (Views: 0.2ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for ::1 at 2021-11-16 17:06:55 -0800
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rougecomet/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 306ms (Views: 306.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-11-16 17:07:00 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"consolePeep", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "consolePeep"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22
+Completed 200 OK in 201ms (Views: 0.2ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/" for ::1 at 2021-11-16 17:08:58 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 19ms (Views: 18.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-11-16 17:09:00 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"consolePeep", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "consolePeep"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22
+Completed 422 Unprocessable Entity in 200ms (Views: 0.2ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/api/session" for ::1 at 2021-11-16 17:10:24 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"consolePeep", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "consolePeep"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22
+Completed 422 Unprocessable Entity in 192ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-11-16 17:12:30 -0800
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"user"=>{"username"=>"postman2", "password"=>"[FILTERED]"}}
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-11-16 17:12:32 -0800
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"user"=>{"username"=>"postman2", "password"=>"[FILTERED]"}}
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-11-16 17:12:58 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"consolePeep", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "consolePeep"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22
+Completed 422 Unprocessable Entity in 192ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/session" for ::1 at 2021-11-16 17:14:06 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"postman2", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "postman2"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22
+Completed 422 Unprocessable Entity in 190ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/session" for ::1 at 2021-11-16 17:15:48 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"consolePeep", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "consolePeep"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22
+Completed 422 Unprocessable Entity in 193ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
