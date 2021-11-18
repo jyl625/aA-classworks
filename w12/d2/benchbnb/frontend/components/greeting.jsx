@@ -6,6 +6,7 @@ class Greeting extends React.Component {
     super(props)
   }
 
+
   render() {
     const { currentUser, logout } = this.props;
 
@@ -17,7 +18,7 @@ class Greeting extends React.Component {
       return (
         <div>
           <h1>Welcome!</h1>
-          <button>Log Out</button>
+          <button onClick={logout}>Log Out</button>
         </div>
       )
     } else {
